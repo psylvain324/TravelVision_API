@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface CoinMarketCapService {
     String getMarketCap(String uri, List<NameValuePair> parameters) throws URISyntaxException, IOException;
-
 }

@@ -1,4 +1,4 @@
-package com.travel.vision.api.utilities;
+package com.travel.vision.api.config;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 
 @RestController
-public class Configurations {
+public class CurrencyConfig {
 
     @PostConstruct
     public void initIt() {

@@ -12,16 +12,5 @@ import java.util.List;
 
 @Service
 public class CurrencyServiceImpl extends BaseService implements CurrencyService {
-    @Autowired
-    private CurrencyRepository currencyRepository;
 
-    @Override
-    public Page<Currency> getAllCurrencies(Pageable pageable) {
-        return currencyRepository.findAll(pageable);
-    }
-
-    @Override
-    public Currency findByCode(String code) {
-        return null;
-    }
 }
