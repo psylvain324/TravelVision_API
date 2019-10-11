@@ -16,21 +16,21 @@ public class ResponseDtoConverter {
             dto.setData(null);
         }
         dto.setResult(value != null);
-        dto.setErrormsg("");
+        dto.setErrorMessage("");
         dto.setErrorCode(0);
         return dto;
     }
 
     public static <T> ResponseDto<T> convert(String key, T value, String error) {
         ResponseDto<T> dto = convert(key, value);
-        dto.setErrormsg(error);
+        dto.setErrorMessage(error);
         dto.setErrorCode(124);
         return dto;
     }
 
     public static <T> ResponseDto<T> convert(String key, T value, String error, int errorCode) {
         ResponseDto<T> dto = convert(key, value);
-        dto.setErrormsg(error);
+        dto.setErrorMessage(error);
         dto.setErrorCode(errorCode);
         return dto;
     }

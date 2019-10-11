@@ -1,16 +1,16 @@
 package com.travel.vision.api.utilities;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.util.Map;
 
+@Getter
+@Setter
 public class ResponseDto<T> {
     private boolean result;
     private Map<String, T> data;
-    private String errormsg;
+    private String errorMessage;
     private int errorCode;
-
-    public boolean isResult() {
-        return result;
-    }
 
     public void setResult(boolean result) {
         this.result = result;
@@ -24,16 +24,8 @@ public class ResponseDto<T> {
         this.data = data;
     }
 
-    public String getErrormsg() {
-        return errormsg;
-    }
-
-    public void setErrormsg(String errormsg) {
-        this.errormsg = errormsg;
-    }
-
-    public int getErrorCode() {
-        return errorCode;
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public void setErrorCode(int errorCode) {
