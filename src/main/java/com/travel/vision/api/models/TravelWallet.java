@@ -17,4 +17,12 @@ public class TravelWallet extends BaseModel {
     @JoinColumn(name = "profile_id")
     @ApiModelProperty(notes = "The Profile Id to Join Profiles in the database")
     private Profile profile;
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 }

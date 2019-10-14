@@ -37,7 +37,7 @@ public class ResponseDtoConverter {
 
     public static <T> TvResponse<T> convert( T value, String error,int errorCode) {
         TvResponse<T> dto = convert(value);
-        dto.setErrormsg(error);
+        dto.setErrorMessage(error);
         dto.setErrorCode(errorCode);
         return dto;
     }
@@ -45,7 +45,7 @@ public class ResponseDtoConverter {
         TvResponse<T> dto = new TvResponse<>();
         dto.setData(value);
         dto.setResult(value != null);
-        dto.setErrormsg("");
+        dto.setErrorMessage("");
         dto.setErrorCode(0);
         return dto;
     }

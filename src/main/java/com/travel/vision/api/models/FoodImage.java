@@ -22,6 +22,26 @@ public class FoodImage extends BaseModel {
     @JsonIgnore
     private MenuItem menuItem;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public DeviceType getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(DeviceType deviceType) {
+        this.deviceType = deviceType;
+    }
+
+    public MenuItem getMenuItem() {
+        return menuItem;
+    }
+
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }

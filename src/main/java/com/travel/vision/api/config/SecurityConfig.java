@@ -19,7 +19,7 @@ import java.util.Collection;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = {"com.tml.sats.rtt.facebook"})
+@ComponentScan(basePackages = {"com.travel.vision.social"})
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final AuthenticationEntryPoint authenticationEntryPoint;
@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         http.authorizeRequests()
-                .antMatchers("/api/v1/startup").permitAll()
+                .antMatchers("/api/startup").permitAll()
                 .anyRequest()
                 .authenticated()
         ;
@@ -52,13 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers(HttpMethod.POST, "/api/v1/auth/facebook/login","/api/v1/auth/facebook/sign-up","/api/v1/auth/login", "/api/v1/auth/registration", "/api/v1/traxo/webcallback","/api/v1/auth/new-password");
-        web.ignoring().antMatchers(HttpMethod.GET, "/api/v1/auth/verify-email/**","/api/v1/auth/check-email/**","/api/v1/trips/trip-suggestions-fnb","/api/v1/trips/trip-suggestions-attractions","/api/v1/trips/trip-suggestions-activities","/api/v1/trips/trip-suggestions-popular","/api/v1/auth/sent-email/**","/api/v1/auth/forgot-password/**");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/v1/auth/facebook/login","/api/v1/auth/facebook/sign-up","/api/v1/auth/login", "/api/v1/auth/registration", "/api/v1/auth/new-password");
+        web.ignoring().antMatchers(HttpMethod.GET, "/api/v1/auth/verify-email/**","/api/v1/auth/check-email/**","/api/v1/auth/forgot-password/**");
         web.ignoring().antMatchers( HttpMethod.OPTIONS, "/**" );
         web
                 .ignoring()
                 .antMatchers();
-        //allow all Swagger related stuff
         web.ignoring().antMatchers(
                 HttpMethod.GET,
                 "/resources/**",

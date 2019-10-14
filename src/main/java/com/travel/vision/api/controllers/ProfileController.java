@@ -29,8 +29,8 @@ public class ProfileController {
     }
 
     @ApiOperation(value = "Update an already created User")
-    @RequestMapping(value = "/update/", method = RequestMethod.GET)
-    public TvResponse<String> updatedProfile (@Valid @RequestBody Profile profile) {
+    @PatchMapping(value = "/update/")
+    public TvResponse<String> updateProfile (@Valid @RequestBody Profile profile) {
         profileService.update(profile);
         return ResponseDtoConverter.convert(Message.PROFILE_UPDATED);
     }
@@ -43,13 +43,13 @@ public class ProfileController {
     }
 
     @ApiOperation(value = "Get List of Profile records")
-    @RequestMapping(value = "/profiles", method = RequestMethod.GET)
+    @GetMapping(value = "/profiles")
     public TvResponse<List<Profile>> getAllProfiles(Pageable pageable) {
         return ResponseDtoConverter.convert(profileService.findAll(pageable));
     }
 
     @ApiOperation(value = "Get List of Active Profile records")
-    @RequestMapping(value = "/profiles/active", method = RequestMethod.GET)
+    @GetMapping(value = "/profiles/active")
     public TvResponse<List<Profile>> getActiveProfiles(Pageable pageable) {
         return ResponseDtoConverter.convert(profileService.findAllActive());
     }
@@ -61,7 +61,7 @@ public class ProfileController {
     }
 
     @ApiOperation(value = "Get Profile stored in the database by email")
-    @RequestMapping(value = "/get-by-email", method = RequestMethod.GET)
+    @GetMapping(value = "/get-by-email")
     public TvResponse<Profile> getProfileByEmail(@RequestParam String email) {
         return ResponseDtoConverter.convert(profileService.getByEmail(email));
     }

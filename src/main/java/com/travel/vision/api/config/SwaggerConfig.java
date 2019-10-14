@@ -26,8 +26,11 @@ import java.util.Optional;
 public class SwaggerConfig {
 
     @Bean
-    public Docket api() {
+    public Docket CMS() {
         return baseDocket("Travel Vision API","","CMS");
+    }
+    public Docket Mobile() {
+        return baseDocket("Travel Vision API","","Mobile");
     }
     private Docket baseDocket(String title, String description, String groupName){
 
@@ -77,7 +80,7 @@ public class SwaggerConfig {
                 "Error Code:100    Error Message: 'Can be any message'\n"
         );
         Docket docket;
-        if(groupName.equals("cms")){
+        if(groupName.equals("CMS")){
             docket = new Docket(DocumentationType.SWAGGER_2)
                     .groupName(groupName)
                     .apiInfo(apiInfo(title,description))
@@ -89,7 +92,7 @@ public class SwaggerConfig {
             docket = new Docket(DocumentationType.SWAGGER_2)
                     .groupName(groupName)
                     .apiInfo(apiInfo(title, description))
-                    .select().paths(PathSelectors.regex("/api/v1/.*"))
+                    .select().paths(PathSelectors.regex("/api/.*"))
                     .build()
                     .globalOperationParameters(List.of(jwtTokenHeader))
                     .useDefaultResponseMessages(false);
@@ -111,9 +114,9 @@ public class SwaggerConfig {
         return new ApiInfo(
                 title,
                 description,
+                "1.0",
                 "",
-                "",
-                new Contact("", "", ""),
+                new Contact("Phillip Sylvain", "", "psylvain324@gmail.com"),
                 "",
                 "",
                 List.of());

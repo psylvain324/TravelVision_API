@@ -40,6 +40,54 @@ public class Profile extends BaseModel {
     @Column(name = "email_subscription")
     private boolean emailSubscription;
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getMobileCountryCode() {
+        return mobileCountryCode;
+    }
+
+    public void setMobileCountryCode(String mobileCountryCode) {
+        this.mobileCountryCode = mobileCountryCode;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public boolean isEmailSubscription() {
+        return emailSubscription;
+    }
+
+    public void setEmailSubscription(boolean emailSubscription) {
+        this.emailSubscription = emailSubscription;
+    }
+
     public Status getStatus() {
         return status;
     }

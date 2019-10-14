@@ -47,4 +47,52 @@ public class Reservation extends BaseModel {
     @Enumerated(EnumType.STRING)
     @Column(name = "reservation_status")
     private ReservationStatus status = ReservationStatus.Pending;
+
+    public long getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(long reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public String getReservationName() {
+        return reservationName;
+    }
+
+    public void setReservationName(String reservationName) {
+        this.reservationName = reservationName;
+    }
+
+    public Time getReservationTime() {
+        return reservationTime;
+    }
+
+    public void setReservationTime(Time reservationTime) {
+        this.reservationTime = reservationTime;
+    }
+
+    public int getPartySize() {
+        return partySize;
+    }
+
+    public void setPartySize(int partySize) {
+        this.partySize = partySize;
+    }
+
+    public ReservationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReservationStatus status) {
+        this.status = status;
+    }
 }

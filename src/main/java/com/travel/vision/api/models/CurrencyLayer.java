@@ -1,16 +1,10 @@
 package com.travel.vision.api.models;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
-
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "currency_layer")
-@ApiModel(description = "All details related to Currency Layer Data")
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Getter
 @Setter
@@ -29,4 +23,44 @@ public class CurrencyLayer extends Currency {
 
     @Column(name = "rate")
     private Double rate;
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getBase() {
+        return base;
+    }
+
+    public void setBase(String base) {
+        this.base = base;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
 }

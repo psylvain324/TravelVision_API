@@ -3,7 +3,7 @@ package com.travel.vision.api.utilities;
 public class TvResponse<T> {
     private boolean result;
     private T data;
-    private String errormsg;
+    private String errorMessage;
     private int errorCode;
     public boolean isResult() {
         return result;
@@ -21,12 +21,12 @@ public class TvResponse<T> {
         this.data = data;
     }
 
-    public String getErrormsg() {
-        return errormsg;
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
-    public void setErrormsg(String errormsg) {
-        this.errormsg = errormsg;
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public int getErrorCode() {

@@ -1,14 +1,18 @@
 package com.travel.vision.api.controllers;
 
-import com.travel.vision.api.dto.FoodImagePost;
-import com.travel.vision.api.models.FoodImage;
+import com.travel.vision.api.dto.menu.MenuItemPatch;
+import com.travel.vision.api.dto.menu.MenuItemPost;
+import com.travel.vision.api.dto.menu.MenuPatch;
+import com.travel.vision.api.dto.menu.MenuPost;
+import com.travel.vision.api.models.Menu;
 import com.travel.vision.api.models.MenuItem;
-import com.travel.vision.api.repositories.FoodImageRepository;
-import com.travel.vision.api.repositories.MenuItemRepository;
-import com.travel.vision.api.repositories.MenuRepository;
-import com.travel.vision.api.services.ImageStorage;
+import com.travel.vision.api.services.MenuService;
+import com.travel.vision.api.utilities.ResponseDtoConverter;
+import com.travel.vision.api.utilities.TvResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
@@ -17,43 +21,109 @@ import java.util.List;
 @RestController
 @RequestMapping( value = "/admin/menu/")
 public class MenuController {
-    private final MenuRepository menuRepository;
-    private final MenuItemRepository menuItemRepository;
-    private final FoodImageRepository foodImageRepository;
-    private final ImageStorage imageStorage;
+    private final MenuService menuService;
 
-    public MenuController(MenuRepository menuRepository, MenuItemRepository menuItemRepository, FoodImageRepository foodImageRepository, ImageStorage imageStorage) {
-        this.menuRepository = menuRepository;
-        this.menuItemRepository = menuItemRepository;
-        this.foodImageRepository = foodImageRepository;
-        this.imageStorage = imageStorage;
+    public MenuController(MenuService menuService) {
+        this.menuService = menuService;
     }
 
-    @ApiOperation("Get list of menu items")
-    @GetMapping()
-    public List<MenuItem> getMenuItems(){
-        return menuItemRepository.findAll();
+    @ApiOperation("Get list of all Menu records")
+    @GetMapping("/get-all/")
+    public TvResponse<Page<Menu>> getMenus(@RequestBody Pageable pageable){
+        return ResponseDtoConverter.convert(menuService.findAllMenus(pageable));
     }
 
-    @ApiOperation("Add new menu item")
-    @PostMapping()
-    public FoodImage saveMenuItem(@Valid @RequestBody FoodImagePost foodImagePost){
-        FoodImage foodImage = new FoodImage();
-        foodImage.setUrl(imageStorage.upload(foodImagePost.getData(), foodImagePost.getDocumentType()));
-        return foodImageRepository.save(foodImage);
+    @ApiOperation("Get list of all Menu Items by Menu Id")
+    @GetMapping("/{menuId}/menu_items/")
+    public TvResponse<List<MenuItem>> getMenuItems(@PathVariable String menuId){
+        return ResponseDtoConverter.convert(menuService.findAllMenuItemsByMenu(menuId));
     }
 
-    @ApiOperation("Get list of food item images")
-    @GetMapping()
-    public List<FoodImage> getFoodImages(){
-        return foodImageRepository.findAll();
+    @ApiOperation("Get list of all Active Menus")
+    @GetMapping("/active/get-all/")
+    public TvResponse<List<Menu>> getActiveMenus(){
+        return ResponseDtoConverter.convert(menuService.findAllActiveMenus());
     }
 
-    @ApiOperation("Add new food item Image")
-    @PostMapping()
-    public FoodImage saveFoodImage(@Valid @RequestBody FoodImagePost foodImagePost){
-        FoodImage foodImage = new FoodImage();
-        foodImage.setUrl(imageStorage.upload(foodImagePost.getData(), foodImagePost.getDocumentType()));
-        return foodImageRepository.save(foodImage);
+    @ApiOperation("Get list of active Menu Items by Menu Id")
+    @GetMapping("/{menuId}/menu_items/active/")
+    public TvResponse<List<MenuItem>> getActiveMenuItems(@PathVariable String menuId){
+        return ResponseDtoConverter.convert(menuService.finaAllActiveMenuItemsByMenu(menuId));
+    }
+
+    @ApiOperation("Create a new Menu")
+    @GetMapping("/create/")
+    public TvResponse<Menu> saveMenu(@Valid @RequestBody MenuPost menuPost){
+        return ResponseDtoConverter.convert(menuService.createMenu(menuPost));
+    }
+
+    @ApiOperation(value = "Update an already created Menu")
+    @PatchMapping(value = "/update/")
+    public TvResponse<String> updateMenu (@Valid @RequestBody MenuPatch menuPatch) {
+        menuService.updateMenu(menuPatch);
+        return ResponseDtoConverter.convert(Message.MENU_UPDATED);
+    }
+
+    @ApiOperation(value = "Update an already created Menu Item")
+    @PatchMapping(value = "/items/update/")
+    public TvResponse<String> updateMenuItem (@Valid @RequestBody MenuItemPatch menuItemPatch) {
+        menuService.updateMenuItem(menuItemPatch);
+        return ResponseDtoConverter.convert(Message.MENU_ITEM_UPDATED);
+    }
+
+    @ApiOperation(value = "Delete a Menu by Id")
+    @DeleteMapping(value = "/delete/{menuId}")
+    public TvResponse<String> deleteMenu(@PathVariable("menuId") String menuId) {
+        menuService.deleteMenu(menuId);
+        return ResponseDtoConverter.convert(Message.MENU_DELETED);
+    }
+
+    @ApiOperation(value = "Delete a Menu Item by Id")
+    @DeleteMapping(value = "/delete/items/{menuItemId}")
+    public TvResponse<String> deleteMenuItem(@PathVariable("menuItemId") String menuItemId) {
+        menuService.deleteMenuItem(menuItemId);
+        return ResponseDtoConverter.convert(Message.MENU_ITEM_DELETED);
+    }
+
+    @ApiOperation("Add new menu item to an existing menu")
+    @PostMapping("/{menuId}/add/")
+    public TvResponse<MenuItem> addMenuItem(@Valid @RequestBody MenuItemPost menuItemPost, @PathVariable String menuId){
+        return ResponseDtoConverter.convert(menuService.addMenuItem(menuItemPost, menuId));
+    }
+
+    @ApiOperation("Change status of a menu")
+    @PatchMapping("/change-status/{menuId}")
+    public TvResponse<String> changeMenuStatus(@PathVariable("menuId") String menuId) {
+        menuService.changeMenuStatus(menuId);
+        return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
+    }
+
+    @ApiOperation("Change status of a menu item")
+    @PatchMapping("/change-status/{menuItemId}")
+    public TvResponse<String> changeMenuItemStatus(@PathVariable("menuItemId") String menuItemId) {
+        menuService.changeMenuItemStatus(menuItemId);
+        return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
+    }
+
+    @ApiOperation("Make a list of Menus Inactive")
+    @PatchMapping("/make-inactive/")
+    public TvResponse<String> makeMenuInactive(@RequestParam("menuId") List<String> menuIds) {
+        menuService.makeMenuInactive(menuIds);
+        return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
+    }
+
+    @ApiOperation("Make a list of Menu Items Inactive")
+    @PatchMapping("/items/make-inactive/")
+    public TvResponse<String> makeMenuItemInactive(@RequestParam("menuItemId") List<String> menuItemIds) {
+        menuService.makeMenuItemInactive(menuItemIds);
+        return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
+    }
+
+    private static class Message {
+        private final static String STATUS_CHANGED = "Status changed successfully";
+        private final static String MENU_UPDATED = "Menu updated successfully";
+        private final static String MENU_ITEM_UPDATED = "Menu item updated successfully";
+        private final static String MENU_DELETED = "Menu deleted successfully";
+        private final static String MENU_ITEM_DELETED= "Menu item deleted successfully";
     }
 }

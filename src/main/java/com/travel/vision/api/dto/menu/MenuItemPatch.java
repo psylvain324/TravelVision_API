@@ -1,54 +1,26 @@
-package com.travel.vision.api.models;
+package com.travel.vision.api.dto.menu;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.travel.vision.api.dto.IdentifiableDto;
 import com.travel.vision.api.enums.FoodCategory;
 import com.travel.vision.api.enums.Status;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.travel.vision.api.models.FoodReview;
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.*;
+import org.springframework.validation.annotation.Validated;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "menu_item")
-@ApiModel(description = "All details related to Destinations")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class MenuItem {
-    @JsonIgnore
-    @Column(name = "menu_id")
-    private String menuId;
-
-    @Column(name = "dish_name")
+@Validated
+public class MenuItemPatch extends IdentifiableDto {
     private String dishName;
-
-    @Column(name = "food_category")
     private FoodCategory foodCategory;
-
-    @Column(name = "description")
     private String description;
-
-    @JsonIgnore
-    @OneToMany(
-            mappedBy = "menuItem",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
     private List<FoodReview> reviews;
-
-    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    public String getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
-    }
 
     public String getDishName() {
         return dishName;

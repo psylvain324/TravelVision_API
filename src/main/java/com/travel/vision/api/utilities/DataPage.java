@@ -19,7 +19,7 @@ public class DataPage<U> {
     private int pageSize = 0;
 
     public DataPage() {
-        // Intentionally Private
+
     }
 
     public static <U, V> DataPage<U> newPage(Page<V> page, Function<V, U> mapper) {
@@ -38,7 +38,6 @@ public class DataPage<U> {
         return dataPage;
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> DataPage<T> empty() {
         return (DataPage<T>) getEMPTY();
     }

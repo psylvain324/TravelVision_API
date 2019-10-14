@@ -1,4 +1,4 @@
-package com.travel.vision.api.dto;
+package com.travel.vision.api.dto.menu;
 
 import com.travel.vision.api.enums.DocumentType;
 import io.swagger.annotations.ApiModelProperty;
@@ -28,5 +28,9 @@ public class FoodImagePost {
 
     public DocumentType getDocumentType() {
         return documentType;
+    }
+
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 }

@@ -27,4 +27,20 @@ public class FoodRating extends BaseModel {
             orphanRemoval = true
     )
     List<RatingType> ratingTypes;
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public List<RatingType> getRatingTypes() {
+        return ratingTypes;
+    }
+
+    public void setRatingTypes(List<RatingType> ratingTypes) {
+        this.ratingTypes = ratingTypes;
+    }
 }

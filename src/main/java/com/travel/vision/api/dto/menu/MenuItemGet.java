@@ -1,5 +1,6 @@
-package com.travel.vision.api.dto;
+package com.travel.vision.api.dto.menu;
 
+import com.travel.vision.api.dto.AuditableDto;
 import com.travel.vision.api.enums.FoodCategory;
 import com.travel.vision.api.enums.Status;
 import com.travel.vision.api.models.FoodReview;

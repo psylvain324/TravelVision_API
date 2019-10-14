@@ -1,49 +1,32 @@
-package com.travel.vision.api.models;
+package com.travel.vision.api.dto.menu;
 
+import com.travel.vision.api.dto.AuditableDto;
 import com.travel.vision.api.enums.MenuType;
 import com.travel.vision.api.enums.Status;
-import io.swagger.annotations.ApiModel;
+import com.travel.vision.api.models.MenuItem;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.mail.event.MailEvent;
+import org.springframework.validation.annotation.Validated;
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "menu")
-@ApiModel(description = "All details related to menus")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Menu extends BaseModel {
-    @Column(name = "menu_name")
+@Validated
+public class MenuGet extends AuditableDto {
     private String menuName;
-
-    @Column(name = "menu_type")
     private MenuType menuType;
-
-    @Column(name = "start_time")
     private Time startTime;
-
-    @Column(name = "end_time")
     private Time endTime;
-
     @OneToMany(
             mappedBy = "menuItem",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     List<MenuItem> menuItems;
-
-    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    public List<MenuItem> getMenuItems() {
-        return menuItems;
-    }
 
     public String getMenuName() {
         return menuName;
@@ -75,6 +58,10 @@ public class Menu extends BaseModel {
 
     public void setEndTime(Time endTime) {
         this.endTime = endTime;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
     }
 
     public void setMenuItems(List<MenuItem> menuItems) {
