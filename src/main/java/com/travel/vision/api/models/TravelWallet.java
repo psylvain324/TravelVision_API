@@ -1,12 +1,10 @@
 package com.travel.vision.api.models;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "travel_wallet")
 @ApiModel(description = "All details related to Travel Wallets")
@@ -15,5 +13,8 @@ import javax.persistence.Table;
 @Getter
 @Setter
 public class TravelWallet extends BaseModel {
-
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    @ApiModelProperty(notes = "The Profile Id to Join Profiles in the database")
+    private Profile profile;
 }

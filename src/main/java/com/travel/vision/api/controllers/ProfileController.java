@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/profile")
+@RequestMapping(path="/admin/profile")
 @Api(value = "User Profile API")
 public class ProfileController {
     private final ProfileService profileService;

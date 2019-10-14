@@ -8,12 +8,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-@Table(name = "food_review")
-@ApiModel(description = "All details related to food reviews")
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Getter
 @Setter
-public class FoodReview extends BaseModel {
+@Table(name = "menu")
+@ApiModel(description = "All details related to menus")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Menu extends BaseModel {
 
 }

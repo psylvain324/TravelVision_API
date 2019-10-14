@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {"Stripe Controller"}, description = "Stripe Card Controller")
+@Api(tags = {"Stripe Controller"})
 @RestController
 @RequestMapping( value = "/api/stripe/")
 public class StripeController {
@@ -67,7 +67,6 @@ public class StripeController {
 
     private static class Message {
         private final static String CARD_ADDED = "Card added successfully";
-        private final static String CARD_UPDATED = "Card updated successfully";
         private final static String CARD_DELETED = "Card deleted successfully";
     }
 }

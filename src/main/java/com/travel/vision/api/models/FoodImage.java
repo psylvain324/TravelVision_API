@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class FoodImage extends BaseModel{
+public class FoodImage extends BaseModel {
     @Column(nullable = false)
     private String url;
 
@@ -21,5 +21,9 @@ public class FoodImage extends BaseModel{
     @JoinColumn(name = "menu_item_id")
     @JsonIgnore
     private MenuItem menuItem;
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
 

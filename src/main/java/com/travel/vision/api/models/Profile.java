@@ -5,26 +5,39 @@ import com.travel.vision.api.enums.Status;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
-@Table(name = "airport")
-@ApiModel(description = "All details related to Airports")
+@Table(name = "profile")
+@ApiModel(description = "All details related to profiles")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Getter
 @Setter
 public class Profile extends BaseModel {
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "mobile_number")
     private String mobileNumber;
+
+    @Column(name = "mobile_country_code")
     private String mobileCountryCode;
+
+    @Column(name = "birth_date")
     private LocalDate birthDate;
+
+    @Column(name = "gender")
     private Gender gender;
+
+    @Column(name = "status")
     private Status status;
+
+    @Column(name = "email_subscription")
     private boolean emailSubscription;
 
     public Status getStatus() {
