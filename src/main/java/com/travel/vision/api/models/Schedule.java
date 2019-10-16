@@ -6,12 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 
-@Table(name = "schedule")
-@ApiModel(description = "All GET details related to Travel Wallets")
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Getter
 @Setter
+@Table(name = "schedule")
+@ApiModel(description = "All GET details related to Employee Schedules")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Schedule extends BaseModel {
     @OneToOne
     @JoinColumn(name = "profile_id")
