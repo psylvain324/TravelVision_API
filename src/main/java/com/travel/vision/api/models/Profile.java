@@ -1,5 +1,6 @@
 package com.travel.vision.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel.vision.api.enums.Gender;
 import com.travel.vision.api.enums.Status;
 import io.swagger.annotations.ApiModel;
@@ -16,10 +17,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Profile extends BaseModel {
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Column(name = "mobile_number")
@@ -34,11 +36,38 @@ public class Profile extends BaseModel {
     @Column(name = "gender")
     private Gender gender;
 
+    @ManyToOne
+    @JoinColumn(name = "currency_id")
+    private Currency currency;
+
     @Column(name = "status")
     private Status status;
 
     @Column(name = "email_subscription")
     private boolean emailSubscription;
+
+    @Column(name = "email_verified")
+    private boolean emailVerified;
+
+    @Column(name = "stripe_id")
+    private String stripeId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "facebook_profile_picture_id")
+    private FacebookProfilePicture facebookProfilePicture;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "facebook_token_id")
+    @JsonIgnore
+    private FacebookAccessToken facebookAccessToken;
+
+    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @JsonIgnore
+    private PromoWallet promoWallet;
+
+    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @JsonIgnore
+    private TravelWallet travelWallet;
 
     public void setEmail(String email) {
         this.email = email;
@@ -104,4 +133,11 @@ public class Profile extends BaseModel {
         this.password = password;
     }
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 }
