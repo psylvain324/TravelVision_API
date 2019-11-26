@@ -1,12 +1,12 @@
 package com.travel.vision.api.services.ServiceImpl;
 
-import com.travel.vision.api.dto.menu.*;
+import com.travel.vision.api.dto.restaurants.*;
 import com.travel.vision.api.enums.Status;
 import com.travel.vision.api.mappers.MenuItemMapper;
 import com.travel.vision.api.mappers.MenuMapper;
-import com.travel.vision.api.models.FoodImage;
-import com.travel.vision.api.models.Menu;
-import com.travel.vision.api.models.MenuItem;
+import com.travel.vision.api.models.restaurants.FoodImage;
+import com.travel.vision.api.models.restaurants.Menu;
+import com.travel.vision.api.models.restaurants.MenuItem;
 import com.travel.vision.api.repositories.FoodImageRepository;
 import com.travel.vision.api.repositories.MenuItemRepository;
 import com.travel.vision.api.repositories.MenuRepository;

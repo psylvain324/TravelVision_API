@@ -1,6 +1,6 @@
 package com.travel.vision.api.services.ServiceImpl;
 
-import com.travel.vision.api.models.Profile;
+import com.travel.vision.api.models.common.Profile;
 import com.travel.vision.api.repositories.ProfileRepository;
 import com.travel.vision.api.services.BaseService;
 import com.travel.vision.api.services.ProfileService;

@@ -3,7 +3,7 @@ package com.travel.vision.api;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import com.travel.vision.api.models.Profile;
+import com.travel.vision.api.models.common.Profile;
 import com.travel.vision.api.repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

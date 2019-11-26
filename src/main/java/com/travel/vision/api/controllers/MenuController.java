@@ -1,11 +1,11 @@
 package com.travel.vision.api.controllers;
 
-import com.travel.vision.api.dto.menu.MenuItemPatch;
-import com.travel.vision.api.dto.menu.MenuItemPost;
-import com.travel.vision.api.dto.menu.MenuPatch;
-import com.travel.vision.api.dto.menu.MenuPost;
-import com.travel.vision.api.models.Menu;
-import com.travel.vision.api.models.MenuItem;
+import com.travel.vision.api.dto.restaurants.MenuItemPatch;
+import com.travel.vision.api.dto.restaurants.MenuItemPost;
+import com.travel.vision.api.dto.restaurants.MenuPatch;
+import com.travel.vision.api.dto.restaurants.MenuPost;
+import com.travel.vision.api.models.restaurants.Menu;
+import com.travel.vision.api.models.restaurants.MenuItem;
 import com.travel.vision.api.services.MenuService;
 import com.travel.vision.api.utilities.ResponseDtoConverter;
 import com.travel.vision.api.utilities.TvResponse;

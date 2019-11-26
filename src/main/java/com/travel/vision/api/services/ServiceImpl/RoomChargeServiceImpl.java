@@ -1,6 +1,6 @@
 package com.travel.vision.api.services.ServiceImpl;
 
-import com.travel.vision.api.models.RoomCharge;
+import com.travel.vision.api.models.restaurants.RoomCharge;
 import com.travel.vision.api.repositories.RoomChargeRepository;
 import com.travel.vision.api.services.BaseService;
 import com.travel.vision.api.services.RoomChargeService;

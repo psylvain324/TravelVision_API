@@ -1,6 +1,6 @@
 package com.travel.vision.api.services;
 
-import com.travel.vision.api.models.Profile;
+import com.travel.vision.api.models.common.Profile;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
 

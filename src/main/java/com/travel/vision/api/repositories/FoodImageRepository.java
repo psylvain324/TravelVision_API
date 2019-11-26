@@ -1,6 +1,6 @@
 package com.travel.vision.api.repositories;
 
-import com.travel.vision.api.models.FoodImage;
+import com.travel.vision.api.models.restaurants.FoodImage;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

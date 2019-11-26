@@ -17,7 +17,7 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @ApiOperation("Get list of all Menu records")
+    @ApiOperation("Get a quote from one currency to another.")
     @GetMapping("/quotes/{from}/{to}")
     public TvResponse<Double> getCurrencyQuote(@PathVariable String from, @RequestParam String to){
         return ResponseDtoConverter.convert(currencyService.getCurrencyQuote(from, to));

@@ -1,6 +1,6 @@
 package com.travel.vision.api.services;
 
-import com.travel.vision.api.models.RoomCharge;
+import com.travel.vision.api.models.restaurants.RoomCharge;
 import java.util.List;
 
 public interface RoomChargeService {

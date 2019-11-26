@@ -1,6 +1,6 @@
 package com.travel.vision.api.controllers;
 
-import com.travel.vision.api.models.RoomCharge;
+import com.travel.vision.api.models.restaurants.RoomCharge;
 import com.travel.vision.api.services.RoomChargeService;
 import com.travel.vision.api.utilities.ResponseDtoConverter;
 import com.travel.vision.api.utilities.TvResponse;

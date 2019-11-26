@@ -1,6 +1,6 @@
 package com.travel.vision.api.controllers;
 
-import com.travel.vision.api.models.Profile;
+import com.travel.vision.api.models.common.Profile;
 import com.travel.vision.api.services.ProfileService;
 import com.travel.vision.api.utilities.ResponseDtoConverter;
 import com.travel.vision.api.utilities.TvResponse;

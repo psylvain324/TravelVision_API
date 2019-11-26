@@ -1,6 +1,6 @@
 package com.travel.vision.api.repositories;
 
-import com.travel.vision.api.models.Employee;
+import com.travel.vision.api.models.employees.Employee;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

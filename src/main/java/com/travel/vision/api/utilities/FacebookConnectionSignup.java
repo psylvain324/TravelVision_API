@@ -1,7 +1,7 @@
 package com.travel.vision.api.utilities;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import com.travel.vision.api.models.Profile;
+import com.travel.vision.api.models.common.Profile;
 import com.travel.vision.api.repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;

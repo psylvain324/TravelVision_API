@@ -1,6 +1,6 @@
 package com.travel.vision.api.repositories;
 
-import com.travel.vision.api.models.RoomCharge;
+import com.travel.vision.api.models.restaurants.RoomCharge;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;

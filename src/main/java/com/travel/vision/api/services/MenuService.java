@@ -1,9 +1,9 @@
 package com.travel.vision.api.services;
 
-import com.travel.vision.api.dto.menu.*;
-import com.travel.vision.api.models.FoodImage;
-import com.travel.vision.api.models.Menu;
-import com.travel.vision.api.models.MenuItem;
+import com.travel.vision.api.dto.restaurants.*;
+import com.travel.vision.api.models.restaurants.FoodImage;
+import com.travel.vision.api.models.restaurants.Menu;
+import com.travel.vision.api.models.restaurants.MenuItem;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;

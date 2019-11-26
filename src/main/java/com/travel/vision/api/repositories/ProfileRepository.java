@@ -1,7 +1,7 @@
 package com.travel.vision.api.repositories;
 
 import com.travel.vision.api.enums.Status;
-import com.travel.vision.api.models.Profile;
+import com.travel.vision.api.models.common.Profile;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

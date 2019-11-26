@@ -1,9 +1,9 @@
 package com.travel.vision.api.mappers;
 
-import com.travel.vision.api.dto.menu.MenuItemGet;
-import com.travel.vision.api.dto.menu.MenuItemPatch;
-import com.travel.vision.api.dto.menu.MenuItemPost;
-import com.travel.vision.api.models.MenuItem;
+import com.travel.vision.api.dto.restaurants.MenuItemGet;
+import com.travel.vision.api.dto.restaurants.MenuItemPatch;
+import com.travel.vision.api.dto.restaurants.MenuItemPost;
+import com.travel.vision.api.models.restaurants.MenuItem;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
