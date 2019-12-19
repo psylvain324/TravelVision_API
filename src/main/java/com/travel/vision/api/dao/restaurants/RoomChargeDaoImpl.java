@@ -1,4 +1,4 @@
-package com.travel.vision.api.dto.restaurants;
+package com.travel.vision.api.dao.restaurants;
 
 import com.travel.vision.api.database.DatabaseManager;
 import com.travel.vision.api.models.restaurants.RoomCharge;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+//TODO: Add Missing Fields & Refactor Redundant Code
 public class RoomChargeDaoImpl implements RoomChargeDao {
     public static final String INSERT_INTO_ROOM_CHARGE_VALUES = "INSERT INTO RoomCharge values (?,?,?)";
     private String driver = "org.apache.derby.jdbc.EmbeddedDriver";
@@ -114,6 +115,54 @@ public class RoomChargeDaoImpl implements RoomChargeDao {
     }
 
     @Override
+    public List<RoomCharge> searchById(long id) {
+        PreparedStatement statement = null;
+        Connection conn = null;
+        ResultSet resultSet = null;
+        List<RoomCharge> roomCharges = new ArrayList<>();
+        try {
+            conn = getConnection();
+            statement = conn.prepareStatement("SELECT * FROM RoomCharge where id=?");
+            statement.setLong(1, id);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                RoomCharge roomCharge = new RoomCharge();
+                roomCharge.setId(Integer.parseInt((resultSet.getString("id"))));
+                roomCharge.setRoomNumber(Integer.parseInt(resultSet.getString("room_number")));
+                roomCharge.setLastName(resultSet.getString("last_name"));
+                roomCharges.add(roomCharge);
+            }
+            conn.commit();
+            return roomCharges;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
     public List<RoomCharge> searchByRoomNumber(String roomNumber) {
         PreparedStatement statement = null;
         Connection conn = null;
@@ -210,13 +259,13 @@ public class RoomChargeDaoImpl implements RoomChargeDao {
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(long id) {
         PreparedStatement statement = null;
         Connection conn = null;
         try {
             conn = getConnection();
             statement = conn.prepareStatement("DELETE FROM RoomCharge WHERE id=?");
-            statement.setString(1, id);
+            statement.setLong(1, id);
             statement.executeUpdate();
             conn.commit();
             return true;
