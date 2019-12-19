@@ -36,7 +36,7 @@ public class RoomChargeController {
 
     @ApiOperation(value = "Delete a Room Charge by Id")
     @DeleteMapping(value = "/delete/{roomChargeId}")
-    public TvResponse<String> deleteRoomCharge(@PathVariable("roomChargeId") String roomChargeId) {
+    public TvResponse<String> deleteRoomCharge(@PathVariable("roomChargeId") long roomChargeId) {
         roomChargeService.delete(roomChargeId);
         return ResponseDtoConverter.convert(Message.ROOM_CHARGE_DELETED);
     }
@@ -49,7 +49,7 @@ public class RoomChargeController {
 
     @ApiOperation(value = "Get a single Room Charge record by Id")
     @GetMapping(value = "/room-charges/{roomChargeId}")
-    public TvResponse<RoomCharge> getOneRoomCharge(@PathVariable String roomChargeId) {
+    public TvResponse<RoomCharge> getOneRoomCharge(@PathVariable long roomChargeId) {
         return ResponseDtoConverter.convert(roomChargeService.getOne(roomChargeId));
     }
 

@@ -37,7 +37,7 @@ public class ProfileController {
 
     @ApiOperation(value = "Delete a User by Id")
     @DeleteMapping(value = "/delete/{profileId}")
-    public TvResponse<String> deleteProfile(@PathVariable("profileId") String profileId) {
+    public TvResponse<String> deleteProfile(@PathVariable("profileId") long profileId) {
         profileService.delete(profileId);
         return ResponseDtoConverter.convert(Message.PROFILE_DELETED);
     }
@@ -56,7 +56,7 @@ public class ProfileController {
 
     @ApiOperation(value = "Get a single Profile record by Id")
     @GetMapping(value = "/profiles/{profileId}")
-    public TvResponse<Profile> getOneProfile(@PathVariable String profileId) {
+    public TvResponse<Profile> getOneProfile(@PathVariable long profileId) {
         return ResponseDtoConverter.convert(profileService.getOne(profileId));
     }
 
@@ -68,7 +68,7 @@ public class ProfileController {
 
     @ApiOperation("Change Profile status")
     @PatchMapping("/features/change-status/{featureId}")
-    public TvResponse<String> changeProfileStatus(@PathVariable("profileId") String profileId) {
+    public TvResponse<String> changeProfileStatus(@PathVariable("profileId") long profileId) {
         profileService.changeStatus(profileId);
         return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
     }

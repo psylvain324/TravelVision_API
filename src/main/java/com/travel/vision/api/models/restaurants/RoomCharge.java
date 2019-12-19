@@ -4,8 +4,9 @@ import com.travel.vision.api.models.common.BaseModel;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -14,18 +15,29 @@ import javax.persistence.*;
 @ApiModel(description = "All GET details related to Travel Wallets")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class RoomCharge extends BaseModel {
+    @NotNull
     @Column(name = "room_number")
     private int roomNumber;
 
+    @NotNull
     @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "email")
     private String email;
 
+    @NotNull
     @Column(name = "bill_amount")
     private double billAmount;
 
+    @Column(precision = 5, scale = 2)
+    private BigDecimal taxRate;
+
+    @NotNull
+    @Column(name = "tax_amount")
+    private double taxAmount;
+
+    @NotNull
     @Column(name = "tip_amount")
     private double tipAmount;
 
@@ -78,5 +90,21 @@ public class RoomCharge extends BaseModel {
 
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public double getTaxAmount() {
+        return taxAmount;
+    }
+
+    public void setTaxAmount(double taxAmount) {
+        this.taxAmount = taxAmount;
+    }
+
+    public BigDecimal getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(BigDecimal taxRate) {
+        this.taxRate = taxRate;
     }
 }

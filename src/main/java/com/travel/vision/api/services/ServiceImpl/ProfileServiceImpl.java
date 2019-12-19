@@ -30,7 +30,7 @@ public class ProfileServiceImpl extends BaseService implements ProfileService {
     }
 
     @Override
-    public void delete(String profileId) {
+    public void delete(long profileId) {
         Profile profile = findOne(Profile.class, profileId);
         profileRepository.delete(profile);
     }
@@ -46,7 +46,7 @@ public class ProfileServiceImpl extends BaseService implements ProfileService {
     }
 
     @Override
-    public Profile getOne(String profileId) {
+    public Profile getOne(long profileId) {
         return findOne(Profile.class, profileId);
     }
 
@@ -56,7 +56,7 @@ public class ProfileServiceImpl extends BaseService implements ProfileService {
     }
 
     @Override
-    public void changeStatus(String profileId) {
+    public void changeStatus(long profileId) {
         Profile profile = getOne(profileId);
         if (profile.getStatus() == Status.Active) {
             profile.setStatus(Status.Inactive);
@@ -68,7 +68,7 @@ public class ProfileServiceImpl extends BaseService implements ProfileService {
     }
 
     @Override
-    public void makeInactive(List<String> profileIds) {
+    public void makeInactive(List<Long> profileIds) {
         List<Profile> profiles = new ArrayList<>();
         profileIds.forEach(t -> {
             Profile profile = getOne(t);

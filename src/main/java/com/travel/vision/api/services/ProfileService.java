@@ -7,11 +7,11 @@ import java.util.List;
 public interface ProfileService {
     Profile create(Profile profile);
     List<Profile> findAllActive();
-    void delete(String profileId);
+    void delete(long profileId);
     Profile update(Profile profile);
-    Profile getOne(String profileId);
+    Profile getOne(long profileId);
     Profile getByEmail(String email);
-    void changeStatus(String seasonId);
-    void makeInactive(List<String> seasonIds);
+    void changeStatus(long profileId);
+    void makeInactive(List<Long> profileIds);
     List<Profile> findAll(Pageable pageable);
 }

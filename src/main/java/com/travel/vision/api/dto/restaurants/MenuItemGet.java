@@ -21,4 +21,44 @@ public class MenuItemGet extends AuditableDto {
     private List<FoodReview> reviews;
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    public String getDishName() {
+        return dishName;
+    }
+
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
+    }
+
+    public FoodCategory getFoodCategory() {
+        return foodCategory;
+    }
+
+    public void setFoodCategory(FoodCategory foodCategory) {
+        this.foodCategory = foodCategory;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<FoodReview> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<FoodReview> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

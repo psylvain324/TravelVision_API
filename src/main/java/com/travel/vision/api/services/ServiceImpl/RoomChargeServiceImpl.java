@@ -5,6 +5,8 @@ import com.travel.vision.api.repositories.RoomChargeRepository;
 import com.travel.vision.api.services.BaseService;
 import com.travel.vision.api.services.RoomChargeService;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -21,7 +23,7 @@ public class RoomChargeServiceImpl extends BaseService implements RoomChargeServ
     }
 
     @Override
-    public void delete(String roomChargeId) {
+    public void delete(long roomChargeId) {
         RoomCharge roomCharge = getOne(roomChargeId);
         roomChargeRepository.delete(roomCharge);
     }
@@ -32,7 +34,7 @@ public class RoomChargeServiceImpl extends BaseService implements RoomChargeServ
     }
 
     @Override
-    public RoomCharge getOne(String roomChargeId) {
+    public RoomCharge getOne(long roomChargeId) {
         return findOne(RoomCharge.class, roomChargeId);
     }
 
@@ -40,4 +42,10 @@ public class RoomChargeServiceImpl extends BaseService implements RoomChargeServ
     public List<RoomCharge> findAll() {
         return roomChargeRepository.findAll();
     }
+
+    @Override
+    public double calculateBillTotal(double subTotal, BigDecimal taxRate, double tipAmount) {
+        return (taxRate.multiply(new BigDecimal(subTotal))).doubleValue() + tipAmount;
+    }
+
 }

@@ -35,7 +35,7 @@ public class MenuController {
 
     @ApiOperation("Get list of all Menu Items by Menu Id")
     @GetMapping("/{menuId}/menu_items/")
-    public TvResponse<List<MenuItem>> getMenuItems(@PathVariable String menuId){
+    public TvResponse<List<MenuItem>> getMenuItems(@PathVariable long menuId){
         return ResponseDtoConverter.convert(menuService.findAllMenuItemsByMenu(menuId));
     }
 
@@ -47,7 +47,7 @@ public class MenuController {
 
     @ApiOperation("Get list of active Menu Items by Menu Id")
     @GetMapping("/{menuId}/menu_items/active/")
-    public TvResponse<List<MenuItem>> getActiveMenuItems(@PathVariable String menuId){
+    public TvResponse<List<MenuItem>> getActiveMenuItems(@PathVariable long menuId){
         return ResponseDtoConverter.convert(menuService.finaAllActiveMenuItemsByMenu(menuId));
     }
 
@@ -73,48 +73,48 @@ public class MenuController {
 
     @ApiOperation(value = "Delete a Menu by Id")
     @DeleteMapping(value = "/delete/{menuId}")
-    public TvResponse<String> deleteMenu(@PathVariable("menuId") String menuId) {
+    public TvResponse<String> deleteMenu(@PathVariable("menuId") long menuId) {
         menuService.deleteMenu(menuId);
         return ResponseDtoConverter.convert(Message.MENU_DELETED);
     }
 
     @ApiOperation(value = "Delete a Menu Item by Id")
     @DeleteMapping(value = "/delete/items/{menuItemId}")
-    public TvResponse<String> deleteMenuItem(@PathVariable("menuItemId") String menuItemId) {
+    public TvResponse<String> deleteMenuItem(@PathVariable("menuItemId") long menuItemId) {
         menuService.deleteMenuItem(menuItemId);
         return ResponseDtoConverter.convert(Message.MENU_ITEM_DELETED);
     }
 
     @ApiOperation("Add new menu item to an existing menu")
     @PostMapping("/{menuId}/add/")
-    public TvResponse<MenuItem> addMenuItem(@Valid @RequestBody MenuItemPost menuItemPost, @PathVariable String menuId){
+    public TvResponse<MenuItem> addMenuItem(@Valid @RequestBody MenuItemPost menuItemPost, @PathVariable long menuId){
         return ResponseDtoConverter.convert(menuService.addMenuItem(menuItemPost, menuId));
     }
 
     @ApiOperation("Change status of a menu")
     @PatchMapping("/change-status/{menuId}")
-    public TvResponse<String> changeMenuStatus(@PathVariable("menuId") String menuId) {
+    public TvResponse<String> changeMenuStatus(@PathVariable("menuId") long menuId) {
         menuService.changeMenuStatus(menuId);
         return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
     }
 
     @ApiOperation("Change status of a menu item")
     @PatchMapping("/change-status/{menuItemId}")
-    public TvResponse<String> changeMenuItemStatus(@PathVariable("menuItemId") String menuItemId) {
+    public TvResponse<String> changeMenuItemStatus(@PathVariable("menuItemId") long menuItemId) {
         menuService.changeMenuItemStatus(menuItemId);
         return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
     }
 
     @ApiOperation("Make a list of Menus Inactive")
     @PatchMapping("/make-inactive/")
-    public TvResponse<String> makeMenuInactive(@RequestParam("menuId") List<String> menuIds) {
+    public TvResponse<String> makeMenuInactive(@RequestParam("menuId") List<Long> menuIds) {
         menuService.makeMenuInactive(menuIds);
         return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
     }
 
     @ApiOperation("Make a list of Menu Items Inactive")
     @PatchMapping("/items/make-inactive/")
-    public TvResponse<String> makeMenuItemInactive(@RequestParam("menuItemId") List<String> menuItemIds) {
+    public TvResponse<String> makeMenuItemInactive(@RequestParam("menuItemId") List<Long> menuItemIds) {
         menuService.makeMenuItemInactive(menuItemIds);
         return ResponseDtoConverter.convert(Message.STATUS_CHANGED);
     }

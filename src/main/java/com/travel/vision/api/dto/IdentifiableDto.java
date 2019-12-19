@@ -9,14 +9,14 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 @Validated
 public class IdentifiableDto {
-    @ApiModelProperty(value = "UUID of the object",required = true)
-    private String id;
+    @ApiModelProperty(value = "Identity PK of the object", required = true)
+    private long id;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

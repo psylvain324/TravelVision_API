@@ -44,7 +44,7 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public MenuItem addMenuItem(MenuItemPost menuItemPost, String menuId) {
+    public MenuItem addMenuItem(MenuItemPost menuItemPost, long menuId) {
         Menu menu = getOneMenu(menuId);
         List<MenuItem> menuItems = menu.getMenuItems();
         MenuItem menuItem = menuItemMapper.toEntity(menuItemPost);
@@ -67,12 +67,12 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public Menu getOneMenu(String menuId) {
+    public Menu getOneMenu(long menuId) {
         return findOne(Menu.class, menuId);
     }
 
     @Override
-    public MenuItem getOneMenuItem(String menuItemId) {
+    public MenuItem getOneMenuItem(long menuItemId) {
         return findOne(MenuItem.class, menuItemId);
     }
 
@@ -87,7 +87,7 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public List<MenuItem> finaAllActiveMenuItemsByMenu(String menuId) {
+    public List<MenuItem> finaAllActiveMenuItemsByMenu(long menuId) {
         Menu menu = menuRepository.getOne(menuId);
         ArrayList<MenuItem> activeMenuItems = new ArrayList<>();
         List<MenuItem> menuItems = menu.getMenuItems();
@@ -101,25 +101,25 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public List<MenuItem> findAllMenuItemsByMenu(String menuId) {
+    public List<MenuItem> findAllMenuItemsByMenu(long menuId) {
         Menu menu = menuRepository.getOne(menuId);
         return menu.getMenuItems();
     }
 
     @Override
-    public void deleteMenu(String menuId) {
+    public void deleteMenu(long menuId) {
         Menu menu = getOneMenu(menuId);
         menuRepository.delete(menu);
     }
 
     @Override
-    public void deleteMenuItem(String menuItemId) {
+    public void deleteMenuItem(long menuItemId) {
         MenuItem menuItem = getOneMenuItem(menuItemId);
         menuItemRepository.delete(menuItem);
     }
 
     @Override
-    public void changeMenuStatus(String menuId) {
+    public void changeMenuStatus(long menuId) {
         Menu menu = getOneMenu(menuId);
         if (menu.getStatus() == Status.Active) {
             menu.setStatus(Status.Inactive);
@@ -131,7 +131,7 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public void changeMenuItemStatus(String menuItemId) {
+    public void changeMenuItemStatus(long menuItemId) {
         MenuItem menuItem = getOneMenuItem(menuItemId);
         if (menuItem.getStatus() == Status.Active) {
             menuItem.setStatus(Status.Inactive);
@@ -143,7 +143,7 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public void makeMenuInactive(List<String> menuIds) {
+    public void makeMenuInactive(List<Long> menuIds) {
         List<Menu> menus = new ArrayList<>();
         menuIds.forEach(t -> {
             Menu menu = getOneMenu(t);
@@ -154,7 +154,7 @@ public class MenuServiceImpl extends BaseService implements MenuService {
     }
 
     @Override
-    public void makeMenuItemInactive(List<String> menuItemIds) {
+    public void makeMenuItemInactive(List<Long> menuItemIds) {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItemIds.forEach(t -> {
             MenuItem menuItem = getOneMenuItem(t);

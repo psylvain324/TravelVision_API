@@ -18,10 +18,10 @@ public class BaseService {
         }
         return entity;
     }
-    public <ENTITY> ENTITY findOne(Class<ENTITY> clazz, String entityId) {
+    public <ENTITY> ENTITY findOne(Class<ENTITY> clazz, long entityId) {
         return findOne(clazz,() ->  entityManager.find(clazz, entityId));
     }
-    public <ENTITY,DTO> DTO findOne(Class<ENTITY> clazz, String id, java.util.function.Function<ENTITY,DTO> mapper) {
+    public <ENTITY,DTO> DTO findOne(Class<ENTITY> clazz, long id, java.util.function.Function<ENTITY,DTO> mapper) {
         return mapper.apply(findOne(clazz, id));
     }
 

@@ -10,20 +10,20 @@ import java.util.List;
 
 public interface MenuService {
     Menu createMenu(MenuPost menuPost);
-    MenuItem addMenuItem(MenuItemPost menuItemPost, String menuId);
+    MenuItem addMenuItem(MenuItemPost menuItemPost, long menuId);
     Menu updateMenu(MenuPatch menuPatch);
     MenuItem updateMenuItem(MenuItemPatch menuItem);
-    Menu getOneMenu(String menuId);
-    MenuItem getOneMenuItem(String menuItemId);
+    Menu getOneMenu(long menuId);
+    MenuItem getOneMenuItem(long menuItemId);
     List<Menu> findAllActiveMenus();
     Page<Menu> findAllMenus(Pageable pageable);
-    List<MenuItem> finaAllActiveMenuItemsByMenu(String menuId);
-    List<MenuItem> findAllMenuItemsByMenu(String menuId);
-    void deleteMenu(String menuId);
-    void deleteMenuItem(String menuItemId);
-    void changeMenuStatus(String menuId);
-    void changeMenuItemStatus(String menuItemId);
-    void makeMenuInactive(List<String> menuIds);
-    void makeMenuItemInactive(List<String> menuItemIds);
+    List<MenuItem> finaAllActiveMenuItemsByMenu(long menuId);
+    List<MenuItem> findAllMenuItemsByMenu(long menuId);
+    void deleteMenu(long menuId);
+    void deleteMenuItem(long menuItemId);
+    void changeMenuStatus(long menuId);
+    void changeMenuItemStatus(long menuItemId);
+    void makeMenuInactive(List<Long> menuIds);
+    void makeMenuItemInactive(List<Long> menuItemIds);
     FoodImage saveFoodImage(FoodImagePost foodImagePost);
 }
