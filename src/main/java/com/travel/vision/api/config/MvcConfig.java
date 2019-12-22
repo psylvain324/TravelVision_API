@@ -12,7 +12,6 @@ import java.util.List;
 @Configuration
 public  class MvcConfig implements WebMvcConfigurer {
 
-
     @Override
     public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {
 

@@ -19,7 +19,7 @@ import java.util.Collection;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = {"com.travel.vision.social"})
+@ComponentScan(basePackages = {"com.travel.vision.api"})
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final AuthenticationEntryPoint authenticationEntryPoint;

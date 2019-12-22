@@ -6,8 +6,13 @@ import com.travel.vision.api.utilities.ResponseDtoConverter;
 import com.travel.vision.api.utilities.TvResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.tomcat.jni.Local;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -43,14 +48,26 @@ public class RoomChargeController {
 
     @ApiOperation(value = "Get List of Room Charge records")
     @GetMapping(value = "/room-charges/")
-    public TvResponse<List<RoomCharge>> getAllRoomCharges() {
-        return ResponseDtoConverter.convert(roomChargeService.findAll());
+    public TvResponse<Page<RoomCharge>> getAllRoomCharges(Pageable pageable) {
+        return ResponseDtoConverter.convert(roomChargeService.findAllPageable(pageable));
+    }
+
+    @ApiOperation(value = "Get List of Room Charge records by date range")
+    @GetMapping(value = "/room-charges/{from}/{to}")
+    public TvResponse<Page<RoomCharge>> getAllRoomChargesByDateRange(@PathVariable LocalDateTime from, @PathVariable LocalDateTime to, Pageable pageable) {
+        return ResponseDtoConverter.convert(roomChargeService.findAllByDatePageable(from, to, pageable));
     }
 
     @ApiOperation(value = "Get a single Room Charge record by Id")
     @GetMapping(value = "/room-charges/{roomChargeId}")
     public TvResponse<RoomCharge> getOneRoomCharge(@PathVariable long roomChargeId) {
         return ResponseDtoConverter.convert(roomChargeService.getOne(roomChargeId));
+    }
+
+    @ApiOperation(value = "Calculate the Total Bill for the Room Charge")
+    @GetMapping(value = "/room-charges/calculate/")
+    public TvResponse<Double> calculateTotalBill(@RequestParam double subTotal, @RequestParam BigDecimal taxRate, @RequestParam double tipAmount) {
+        return ResponseDtoConverter.convert(roomChargeService.calculateBillTotal(subTotal, taxRate, tipAmount));
     }
 
     private static class Message {

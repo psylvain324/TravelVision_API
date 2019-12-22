@@ -4,9 +4,11 @@ import com.travel.vision.api.models.restaurants.RoomCharge;
 import com.travel.vision.api.repositories.RoomChargeRepository;
 import com.travel.vision.api.services.BaseService;
 import com.travel.vision.api.services.RoomChargeService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -41,6 +43,21 @@ public class RoomChargeServiceImpl extends BaseService implements RoomChargeServ
     @Override
     public List<RoomCharge> findAll() {
         return roomChargeRepository.findAll();
+    }
+
+    @Override
+    public List<RoomCharge> findAllByDate(LocalDateTime from, LocalDateTime to) {
+        return roomChargeRepository.findAllByDateRange(from, to);
+    }
+
+    @Override
+    public Page<RoomCharge> findAllPageable(Pageable pageable) {
+        return roomChargeRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<RoomCharge> findAllByDatePageable(LocalDateTime from, LocalDateTime to, Pageable pageable) {
+        return roomChargeRepository.findAllByDateRangePageable(from, to, pageable);
     }
 
     @Override

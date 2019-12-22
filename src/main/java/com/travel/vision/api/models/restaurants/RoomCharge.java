@@ -1,5 +1,6 @@
 package com.travel.vision.api.models.restaurants;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.travel.vision.api.models.common.BaseModel;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -24,7 +26,11 @@ public class RoomCharge extends BaseModel {
     private String lastName;
 
     @Column(name = "email")
+    @NotNull
     private String email;
+
+    @Column(name = "email_receipt")
+    private boolean emailReceipt;
 
     @NotNull
     @Column(name = "bill_amount")
@@ -43,6 +49,10 @@ public class RoomCharge extends BaseModel {
 
     @Column(name = "total_amount")
     private double totalAmount;
+
+    @Column(name = "charge_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime chargeDate;
 
     public int getRoomNumber() {
         return roomNumber;
@@ -106,5 +116,21 @@ public class RoomCharge extends BaseModel {
 
     public void setTaxRate(BigDecimal taxRate) {
         this.taxRate = taxRate;
+    }
+
+    public boolean isEmailReceipt() {
+        return emailReceipt;
+    }
+
+    public void setEmailReceipt(boolean emailReceipt) {
+        this.emailReceipt = emailReceipt;
+    }
+
+    public LocalDateTime getChargeDate() {
+        return chargeDate;
+    }
+
+    public void setChargeDate(LocalDateTime chargeDate) {
+        this.chargeDate = chargeDate;
     }
 }

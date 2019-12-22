@@ -1,9 +1,9 @@
 package com.travel.vision.api.controllers;
 
-import com.travel.vision.api.dto.restaurants.MenuItemPatch;
-import com.travel.vision.api.dto.restaurants.MenuItemPost;
-import com.travel.vision.api.dto.restaurants.MenuPatch;
-import com.travel.vision.api.dto.restaurants.MenuPost;
+import com.travel.vision.api.dtos.restaurants.MenuItemPatch;
+import com.travel.vision.api.dtos.restaurants.MenuItemPost;
+import com.travel.vision.api.dtos.restaurants.MenuPatch;
+import com.travel.vision.api.dtos.restaurants.MenuPost;
 import com.travel.vision.api.models.restaurants.Menu;
 import com.travel.vision.api.models.restaurants.MenuItem;
 import com.travel.vision.api.services.MenuService;

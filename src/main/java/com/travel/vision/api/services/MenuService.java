@@ -1,6 +1,6 @@
 package com.travel.vision.api.services;
 
-import com.travel.vision.api.dto.restaurants.*;
+import com.travel.vision.api.dtos.restaurants.*;
 import com.travel.vision.api.models.restaurants.FoodImage;
 import com.travel.vision.api.models.restaurants.Menu;
 import com.travel.vision.api.models.restaurants.MenuItem;

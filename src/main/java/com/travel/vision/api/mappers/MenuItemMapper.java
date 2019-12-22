@@ -1,8 +1,8 @@
 package com.travel.vision.api.mappers;
 
-import com.travel.vision.api.dto.restaurants.MenuItemGet;
-import com.travel.vision.api.dto.restaurants.MenuItemPatch;
-import com.travel.vision.api.dto.restaurants.MenuItemPost;
+import com.travel.vision.api.dtos.restaurants.MenuItemGet;
+import com.travel.vision.api.dtos.restaurants.MenuItemPatch;
+import com.travel.vision.api.dtos.restaurants.MenuItemPost;
 import com.travel.vision.api.models.restaurants.MenuItem;
 import org.mapstruct.*;
 

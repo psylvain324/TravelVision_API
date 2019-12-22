@@ -24,7 +24,6 @@ import java.util.Optional;
 @EnableSwagger2
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
-
     @Bean
     public Docket CMS() {
         return baseDocket("Travel Vision API","","CMS");
@@ -88,7 +87,7 @@ public class SwaggerConfig {
                     .build()
                     .globalOperationParameters(List.of(jwtTokenHeader))
                     .useDefaultResponseMessages(false);
-        }else {
+        } else {
             docket = new Docket(DocumentationType.SWAGGER_2)
                     .groupName(groupName)
                     .apiInfo(apiInfo(title, description))

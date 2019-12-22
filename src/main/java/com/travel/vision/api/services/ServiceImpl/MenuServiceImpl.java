@@ -1,6 +1,6 @@
 package com.travel.vision.api.services.ServiceImpl;
 
-import com.travel.vision.api.dto.restaurants.*;
+import com.travel.vision.api.dtos.restaurants.*;
 import com.travel.vision.api.enums.Status;
 import com.travel.vision.api.mappers.MenuItemMapper;
 import com.travel.vision.api.mappers.MenuMapper;

@@ -27,4 +27,28 @@ public class CurrencyConfig {
     public int retrieveKeyID() {
         return key;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public String getKeyLayer() {
+        return keyLayer;
+    }
+
+    public void setKeyLayer(String keyLayer) {
+        this.keyLayer = keyLayer;
+    }
 }
