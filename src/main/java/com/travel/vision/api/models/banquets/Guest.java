@@ -1,17 +1,9 @@
-package com.travel.vision.api.models.employees;
+package com.travel.vision.api.models.banquets;
 
-import com.travel.vision.api.enums.JobPosition;
-import com.travel.vision.api.models.common.Profile;
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import javax.persistence.*;
+import com.travel.vision.api.models.common.BaseModel;
+import javax.persistence.Column;
 
-@Entity
-@Data
-@Table(name = "employees")
-@ApiModel(description = "All details related to employees")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Employee extends Profile {
+public class Guest extends BaseModel {
     @Column(name = "first_name")
     private String firstName;
 
@@ -29,9 +21,6 @@ public class Employee extends Profile {
 
     @Column(name = "zip_code")
     private String zipCode;
-
-    @Column(name = "job_position")
-    private JobPosition jobPosition;
 
     public String getFirstName() {
         return firstName;
@@ -79,13 +68,5 @@ public class Employee extends Profile {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    public JobPosition getJobPosition() {
-        return jobPosition;
-    }
-
-    public void setJobPosition(JobPosition jobPosition) {
-        this.jobPosition = jobPosition;
     }
 }

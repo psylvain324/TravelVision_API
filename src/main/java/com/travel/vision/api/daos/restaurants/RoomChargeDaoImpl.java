@@ -11,10 +11,10 @@ import java.util.Properties;
 //TODO: Add Missing Fields & Refactor Redundant Code
 public class RoomChargeDaoImpl implements RoomChargeDao {
     public static final String INSERT_INTO_ROOM_CHARGE_VALUES = "INSERT INTO RoomCharge values (?,?,?)";
-    private String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-    private String protocol = "jdbc:derby:";
-    private String userId = "dbo";
-    private String dbName = "TravelVisionDb";
+    private final String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+    private final String protocol = "jdbc:derby:";
+    private final String userId = "dbo";
+    private final String dbName = "TravelVisionDb";
     @Autowired
     private DatabaseManager databaseManager;
 
@@ -295,38 +295,6 @@ public class RoomChargeDaoImpl implements RoomChargeDao {
             }
         }
         return false;
-    }
-
-    public String getDriver() {
-        return driver;
-    }
-
-    public void setDriver(String driver) {
-        this.driver = driver;
-    }
-
-    public String getProtocol() {
-        return protocol;
-    }
-
-    public void setProtocol(String protocol) {
-        this.protocol = protocol;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getDbName() {
-        return dbName;
-    }
-
-    public void setDbName(String dbName) {
-        this.dbName = dbName;
     }
 
 }

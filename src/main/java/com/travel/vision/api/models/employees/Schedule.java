@@ -4,16 +4,14 @@ import com.travel.vision.api.models.common.BaseModel;
 import com.travel.vision.api.models.common.Profile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "schedule")
 @ApiModel(description = "All GET details related to Employee Schedules")
 @Inheritance(strategy = InheritanceType.JOINED)
